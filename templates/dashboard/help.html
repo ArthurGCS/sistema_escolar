@@ -1,0 +1,266 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Ajuda - Sistema de Gestão Escolar{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">
+                    <i class="bi bi-question-circle text-primary"></i>
+                    Central de Ajuda
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>Como Usar o Sistema</h3>
+                        <p class="lead">
+                            Este guia irá ajudá-lo a utilizar todas as funcionalidades do Sistema de Gestão Escolar.
+                        </p>
+                        
+                        <!-- Accordion com as seções de ajuda -->
+                        <div class="accordion" id="helpAccordion">
+                            <!-- Seção: Primeiros Passos -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        <i class="bi bi-play-circle me-2"></i>
+                                        Primeiros Passos
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                    <div class="accordion-body">
+                                        <h5>1. Fazer Login</h5>
+                                        <p>Acesse o sistema usando suas credenciais de usuário e senha.</p>
+                                        
+                                        <h5>2. Selecionar Unidade Escolar</h5>
+                                        <p>Se você tem acesso a múltiplas unidades, selecione a unidade desejada.</p>
+                                        
+                                        <h5>3. Navegar pelo Dashboard</h5>
+                                        <p>Use o menu de navegação para acessar as funcionalidades disponíveis para seu perfil.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Seção: Perfil de Aluno -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        <i class="bi bi-person me-2"></i>
+                                        Perfil de Aluno
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                    <div class="accordion-body">
+                                        <h5>Visualizar Notas</h5>
+                                        <ul>
+                                            <li>Acesse "Minhas Notas" no menu principal</li>
+                                            <li>Veja suas notas por disciplina</li>
+                                            <li>Consulte sua média geral</li>
+                                        </ul>
+                                        
+                                        <h5>Entregar Trabalhos</h5>
+                                        <ul>
+                                            <li>Acesse "Meus Trabalhos" no menu</li>
+                                            <li>Clique em "Entregar" no trabalho desejado</li>
+                                            <li>Faça upload do arquivo e envie</li>
+                                        </ul>
+                                        
+                                        <h5>Acompanhar Desempenho</h5>
+                                        <ul>
+                                            <li>Monitore suas notas no dashboard</li>
+                                            <li>Verifique trabalhos pendentes</li>
+                                            <li>Consulte frequência escolar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Seção: Perfil de Professor -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        <i class="bi bi-person-badge me-2"></i>
+                                        Perfil de Professor
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                    <div class="accordion-body">
+                                        <h5>Gerenciar Disciplinas</h5>
+                                        <ul>
+                                            <li>Acesse "Minhas Disciplinas" no menu</li>
+                                            <li>Veja as turmas atribuídas</li>
+                                            <li>Consulte o cronograma de aulas</li>
+                                        </ul>
+                                        
+                                        <h5>Lançar Notas</h5>
+                                        <ul>
+                                            <li>Acesse "Notas" no menu principal</li>
+                                            <li>Selecione a turma e disciplina</li>
+                                            <li>Digite as notas dos alunos</li>
+                                            <li>Salve as alterações</li>
+                                        </ul>
+                                        
+                                        <h5>Criar Trabalhos</h5>
+                                        <ul>
+                                            <li>Acesse "Trabalhos" no menu</li>
+                                            <li>Clique em "Novo Trabalho"</li>
+                                            <li>Preencha as informações necessárias</li>
+                                            <li>Defina a data de entrega</li>
+                                        </ul>
+                                        
+                                        <h5>Solicitar Recursos</h5>
+                                        <ul>
+                                            <li>Acesse "Requerimentos" no menu</li>
+                                            <li>Clique em "Novo Requerimento"</li>
+                                            <li>Descreva sua solicitação</li>
+                                            <li>Envie para a administração</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Seção: Perfil de Administrador -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+                                        <i class="bi bi-person-workspace me-2"></i>
+                                        Perfil de Administrador
+                                    </button>
+                                </h2>
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                    <div class="accordion-body">
+                                        <h5>Gestão de Alunos</h5>
+                                        <ul>
+                                            <li>Acesse "Gestão" > "Alunos" no menu</li>
+                                            <li>Cadastre novos alunos</li>
+                                            <li>Edite informações existentes</li>
+                                            <li>Matricule alunos em turmas</li>
+                                        </ul>
+                                        
+                                        <h5>Gestão de Professores</h5>
+                                        <ul>
+                                            <li>Acesse "Gestão" > "Professores" no menu</li>
+                                            <li>Cadastre novos professores</li>
+                                            <li>Atribua disciplinas</li>
+                                            <li>Gerencie especializações</li>
+                                        </ul>
+                                        
+                                        <h5>Gestão de Turmas</h5>
+                                        <ul>
+                                            <li>Acesse "Gestão" > "Turmas" no menu</li>
+                                            <li>Crie novas turmas</li>
+                                            <li>Atribua disciplinas às turmas</li>
+                                            <li>Gerencie matrículas</li>
+                                        </ul>
+                                        
+                                        <h5>Análise de Requerimentos</h5>
+                                        <ul>
+                                            <li>Acesse "Requerimentos" no menu</li>
+                                            <li>Visualize solicitações pendentes</li>
+                                            <li>Analise e responda requerimentos</li>
+                                            <li>Gere relatórios de análise</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Seção: Problemas Comuns -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+                                        <i class="bi bi-exclamation-triangle me-2"></i>
+                                        Problemas Comuns
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                    <div class="accordion-body">
+                                        <h5>Esqueci minha senha</h5>
+                                        <p>Entre em contato com a administração da escola para redefinir sua senha.</p>
+                                        
+                                        <h5>Não consigo acessar uma funcionalidade</h5>
+                                        <p>Verifique se você tem as permissões necessárias para acessar a funcionalidade desejada.</p>
+                                        
+                                        <h5>Erro ao fazer upload de arquivo</h5>
+                                        <p>Verifique se o arquivo está no formato correto e não excede o tamanho máximo permitido.</p>
+                                        
+                                        <h5>Página não carrega</h5>
+                                        <p>Tente atualizar a página (F5) ou limpar o cache do navegador.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <!-- Quick Links -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-lightning"></i>
+                                    Acesso Rápido
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'dashboard:home' %}" class="btn btn-outline-primary btn-sm w-100 mb-2">
+                                    <i class="bi bi-house"></i>
+                                    Dashboard
+                                </a>
+                                <a href="{% url 'accounts:profile' %}" class="btn btn-outline-secondary btn-sm w-100 mb-2">
+                                    <i class="bi bi-person"></i>
+                                    Meu Perfil
+                                </a>
+                                <a href="{% url 'accounts:change-password' %}" class="btn btn-outline-warning btn-sm w-100 mb-2">
+                                    <i class="bi bi-key"></i>
+                                    Alterar Senha
+                                </a>
+                                <a href="{% url 'dashboard:about' %}" class="btn btn-outline-info btn-sm w-100">
+                                    <i class="bi bi-info-circle"></i>
+                                    Sobre o Sistema
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-envelope"></i>
+                                    Suporte
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Email:</strong> suporte@escola.com</p>
+                                <p><strong>Telefone:</strong> (11) 1234-5678</p>
+                                <p><strong>Horário:</strong> Seg-Sex, 8h-18h</p>
+                                <p class="small text-muted">
+                                    Para problemas urgentes, entre em contato com a administração da escola.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Keyboard Shortcuts -->
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-keyboard"></i>
+                                    Atalhos de Teclado
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><kbd>Ctrl</kbd> + <kbd>S</kbd> - Salvar formulário</p>
+                                <p><kbd>Ctrl</kbd> + <kbd>P</kbd> - Imprimir página</p>
+                                <p><kbd>Esc</kbd> - Fechar modal</p>
+                                <p><kbd>F5</kbd> - Atualizar página</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

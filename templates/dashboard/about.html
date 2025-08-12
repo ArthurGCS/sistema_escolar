@@ -1,0 +1,157 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Sobre - Sistema de Gestão Escolar{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="mb-0">
+                    <i class="bi bi-info-circle text-primary"></i>
+                    Sobre o Sistema de Gestão Escolar
+                </h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3>Visão Geral</h3>
+                        <p class="lead">
+                            O Sistema de Gestão Escolar é uma solução completa desenvolvida em Django para gerenciar 
+                            instituições educacionais de forma eficiente e organizada.
+                        </p>
+                        
+                        <h4>Características Principais</h4>
+                        <ul class="list-unstyled">
+                            <li><i class="bi bi-check-circle text-success"></i> <strong>Multi-tenant:</strong> Suporte a múltiplas unidades escolares</li>
+                            <li><i class="bi bi-check-circle text-success"></i> <strong>Controle de Acesso:</strong> Sistema RBAC (Role-Based Access Control)</li>
+                            <li><i class="bi bi-check-circle text-success"></i> <strong>API REST:</strong> Interface completa para integração</li>
+                            <li><i class="bi bi-check-circle text-success"></i> <strong>Autenticação JWT:</strong> Sistema seguro de tokens</li>
+                            <li><i class="bi bi-check-circle text-success"></i> <strong>Interface Responsiva:</strong> Funciona em qualquer dispositivo</li>
+                        </ul>
+                        
+                        <h4>Funcionalidades por Perfil</h4>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-person-workspace text-primary" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title mt-2">Administradores</h5>
+                                        <p class="card-text small">
+                                            Gestão completa de alunos, professores, turmas e disciplinas. 
+                                            Análise de requerimentos e geração de relatórios institucionais.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-person-badge text-success" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title mt-2">Professores</h5>
+                                        <p class="card-text small">
+                                            Gestão de disciplinas e turmas, lançamento de notas, 
+                                            criação de trabalhos e solicitação de recursos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="bi bi-person text-info" style="font-size: 2rem;"></i>
+                                        <h5 class="card-title mt-2">Alunos</h5>
+                                        <p class="card-text small">
+                                            Visualização de notas, entrega de trabalhos acadêmicos 
+                                            e acompanhamento do desempenho escolar.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4>Tecnologias Utilizadas</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Backend</h6>
+                                <ul>
+                                    <li><strong>Django 4.2+</strong> - Framework web principal</li>
+                                    <li><strong>Django REST Framework</strong> - API REST</li>
+                                    <li><strong>SimpleJWT</strong> - Autenticação via tokens</li>
+                                    <li><strong>PostgreSQL/SQLite</strong> - Banco de dados</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Frontend</h6>
+                                <ul>
+                                    <li><strong>Bootstrap 5</strong> - Framework CSS</li>
+                                    <li><strong>Bootstrap Icons</strong> - Ícones</li>
+                                    <li><strong>JavaScript</strong> - Interatividade</li>
+                                    <li><strong>Django Templates</strong> - Renderização</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-gear"></i>
+                                    Informações Técnicas
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Versão:</strong> 1.0.0</p>
+                                <p><strong>Linguagem:</strong> Python 3.8+</p>
+                                <p><strong>Framework:</strong> Django 4.2+</p>
+                                <p><strong>Banco de Dados:</strong> SQLite (dev) / PostgreSQL (prod)</p>
+                                <p><strong>Autenticação:</strong> JWT Tokens</p>
+                                <p><strong>Interface:</strong> Responsiva</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-people"></i>
+                                    Desenvolvimento
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Desenvolvido com:</strong> ❤️ para melhorar a educação</p>
+                                <p><strong>Licença:</strong> MIT</p>
+                                <p><strong>Suporte:</strong> Documentação completa</p>
+                                <p><strong>Contribuição:</strong> Bem-vinda!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-link-45deg"></i>
+                                    Links Úteis
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <a href="{% url 'dashboard:help' %}" class="btn btn-outline-primary btn-sm w-100 mb-2">
+                                    <i class="bi bi-question-circle"></i>
+                                    Página de Ajuda
+                                </a>
+                                <a href="{% url 'dashboard:home' %}" class="btn btn-outline-secondary btn-sm w-100">
+                                    <i class="bi bi-house"></i>
+                                    Voltar ao Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

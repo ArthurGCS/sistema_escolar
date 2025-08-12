@@ -1,0 +1,345 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Sistema de Gestão Escolar{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Welcome Section -->
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-body text-center">
+                <h1 class="text-gradient mb-3">
+                    <i class="bi bi-mortarboard-fill"></i>
+                    Bem-vindo ao Sistema de Gestão Escolar
+                </h1>
+                <p class="lead text-muted">
+                    {% if perfil %}
+                        Olá, {{ user.get_full_name|default:user.username }}! 
+                        Você está logado como <strong>{{ perfil.get_tipo_usuario_display }}</strong>
+                        {% if perfil.unidade_escolar %}
+                            na <strong>{{ perfil.unidade_escolar.nome }}</strong>
+                        {% endif %}
+                    {% else %}
+                        Faça login para acessar suas funcionalidades
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {% if perfil %}
+        <!-- Statistics Cards -->
+        <div class="col-12 mb-4">
+            <h2 class="h4 mb-3">Estatísticas Gerais</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card students">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-people-fill" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="mb-0">{{ total_alunos }}</h3>
+                                <p class="mb-0">Alunos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card teachers">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-person-workspace" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="mb-0">{{ total_professores }}</h3>
+                                <p class="mb-0">Professores</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card classes">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-collection" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="mb-0">{{ total_turmas }}</h3>
+                                <p class="mb-0">Turmas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="stats-card subjects">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-shrink-0">
+                                <i class="bi bi-book" style="font-size: 2rem;"></i>
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h3 class="mb-0">{{ total_disciplinas }}</h3>
+                                <p class="mb-0">Disciplinas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User-specific Dashboard -->
+        {% if perfil.tipo_usuario == 'aluno' %}
+            <!-- Aluno Dashboard -->
+            <div class="col-12 mb-4">
+                <h2 class="h4 mb-3">Meu Dashboard</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-journal-text"></i>
+                            </div>
+                            <div class="dashboard-number">{{ media_geral }}</div>
+                            <div class="dashboard-label">Média Geral</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-check-circle"></i>
+                            </div>
+                            <div class="dashboard-number">{{ total_notas }}</div>
+                            <div class="dashboard-label">Total de Notas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <div class="dashboard-number">{{ trabalhos_entregues }}</div>
+                            <div class="dashboard-label">Trabalhos Entregues</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% elif perfil.tipo_usuario == 'professor' %}
+            <!-- Professor Dashboard -->
+            <div class="col-12 mb-4">
+                <h2 class="h4 mb-3">Meu Dashboard</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-book"></i>
+                            </div>
+                            <div class="dashboard-number">{{ total_disciplinas_professor }}</div>
+                            <div class="dashboard-label">Minhas Disciplinas</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-file-earmark-text"></i>
+                            </div>
+                            <div class="dashboard-number">{{ total_trabalhos }}</div>
+                            <div class="dashboard-label">Trabalhos Criados</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                            <div class="dashboard-number">{{ requerimentos_pendentes }}</div>
+                            <div class="dashboard-label">Requerimentos Pendentes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% elif perfil.tipo_usuario == 'administrador' %}
+            <!-- Administrador Dashboard -->
+            <div class="col-12 mb-4">
+                <h2 class="h4 mb-3">Dashboard Administrativo</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="dashboard-card">
+                            <div class="dashboard-icon">
+                                <i class="bi bi-clipboard-check"></i>
+                            </div>
+                            <div class="dashboard-number">{{ requerimentos_pendentes }}</div>
+                            <div class="dashboard-label">Requerimentos Pendentes</div>
+                        </div>
+                    </div>
+                    {% if perfil.unidade_escolar %}
+                        <div class="col-md-4 mb-3">
+                            <div class="dashboard-card">
+                                <div class="dashboard-icon">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="dashboard-number">{{ alunos_unidade }}</div>
+                                <div class="dashboard-label">Alunos na Unidade</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="dashboard-card">
+                                <div class="dashboard-icon">
+                                    <i class="bi bi-person-workspace"></i>
+                                </div>
+                                <div class="dashboard-number">{{ professores_unidade }}</div>
+                                <div class="dashboard-label">Professores na Unidade</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Quick Actions -->
+        <div class="col-12 mb-4">
+            <h2 class="h4 mb-3">Ações Rápidas</h2>
+            <div class="row">
+                {% if perfil.tipo_usuario == 'aluno' %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-journal-text text-primary"></i>
+                                    Minhas Notas
+                                </h5>
+                                <p class="card-text">Visualize suas notas e desempenho acadêmico.</p>
+                                <a href="{% url 'alunos:minhas-notas' %}" class="btn btn-primary">
+                                    Ver Notas
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-file-earmark-text text-success"></i>
+                                    Meus Trabalhos
+                                </h5>
+                                <p class="card-text">Acesse e entregue seus trabalhos acadêmicos.</p>
+                                <a href="{% url 'alunos:meus-trabalhos' %}" class="btn btn-success">
+                                    Ver Trabalhos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% elif perfil.tipo_usuario == 'professor' %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-book text-primary"></i>
+                                    Minhas Disciplinas
+                                </h5>
+                                <p class="card-text">Gerencie suas disciplinas e turmas.</p>
+                                <a href="{% url 'professores:minhas-disciplinas' %}" class="btn btn-primary">
+                                    Ver Disciplinas
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-file-earmark-text text-success"></i>
+                                    Criar Trabalho
+                                </h5>
+                                <p class="card-text">Crie novos trabalhos para suas turmas.</p>
+                                <a href="{% url 'professores:trabalhos' %}" class="btn btn-success">
+                                    Criar Trabalho
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% elif perfil.tipo_usuario == 'administrador' %}
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-people text-primary"></i>
+                                    Gestão de Alunos
+                                </h5>
+                                <p class="card-text">Cadastre e gerencie alunos da instituição.</p>
+                                <a href="{% url 'alunos:aluno-list' %}" class="btn btn-primary">
+                                    Gerenciar Alunos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-clipboard-check text-warning"></i>
+                                    Requerimentos
+                                </h5>
+                                <p class="card-text">Analise e responda requerimentos dos professores.</p>
+                                <a href="{% url 'administracao:requerimento-list' %}" class="btn btn-warning">
+                                    Ver Requerimentos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    {% else %}
+        <!-- Login Required -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3 class="text-muted mb-3">Faça login para acessar o sistema</h3>
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Entrar
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- System Information -->
+    <div class="col-12 mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi bi-info-circle"></i>
+                    Informações do Sistema
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Versão:</strong> 1.0.0</p>
+                        <p><strong>Última atualização:</strong> {% now "d/m/Y H:i" %}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Suporte:</strong> <a href="{% url 'dashboard:help' %}">Página de Ajuda</a></p>
+                        <p><strong>Sobre:</strong> <a href="{% url 'dashboard:about' %}">Sobre o Sistema</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Auto-refresh dashboard stats every 30 seconds
+    setInterval(function() {
+        updateDashboardStats();
+    }, 30000);
+</script>
+{% endblock %}
